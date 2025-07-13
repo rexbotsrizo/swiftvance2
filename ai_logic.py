@@ -1,7 +1,3 @@
-# Production-Ready AI Logic for Law Firm Client Communication System
-# This file contains clean, tested AI functions ready for production integration
-# Uses OpenAI and LangGraph for advanced AI capabilities
-
 import os
 import json
 import time
