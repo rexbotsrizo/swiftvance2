@@ -1,7 +1,3 @@
-# Production-Ready AI Logic for Law Firm Client Communication System
-# This file contains clean, tested AI functions ready for production integration
-# Uses OpenAI and LangGraph for advanced AI capabilities
-
 import os
 import json
 import time
@@ -305,16 +301,24 @@ def analyze_sentiment(message: str, use_streaming: bool = False, enable_human_de
         
         client = get_openai_client(streaming=use_streaming)
         
-        system_prompt = """You are an expert sentiment analysis AI for legal client communications.
+        system_prompt = """You are Arviso AI's sentiment analysis module - a warm, empathetic AI that understands legal clients deeply.
 
-Analyze the emotional tone and sentiment of client messages with special attention to:
+CORE PRINCIPLES (from instruction.txt):
+- Sound human in your analysis with natural understanding
+- Match and recognize the client's communication "vibe"
+- Consider time since accident for empathy-based insights
+- Use casual, friendly interpretation while staying professional
+
+ANALYSIS FOCUS:
+Analyze client emotions with special attention to:
 - Legal case frustrations and concerns
-- Physical/emotional pain indicators  
+- Physical/emotional pain indicators (consider accident timeline)
 - Communication satisfaction levels
 - Trust and confidence in legal representation
 - Financial stress indicators
+- Their natural communication style (formal vs casual)
 
-Sentiment Categories:
+SENTIMENT CATEGORIES:
 - POSITIVE: Grateful, satisfied, confident, hopeful, appreciative
 - NEGATIVE: Frustrated, angry, disappointed, worried, dissatisfied, in pain
 - NEUTRAL: Factual, brief, neither clearly positive nor negative
@@ -693,27 +697,32 @@ def assess_risk_level(sentiment_history: List[str], response_rate: float,
         
         client = get_openai_client(streaming=use_streaming)
         
-        system_prompt = f"""You are an expert risk assessment AI for law firm client relationships.
+        system_prompt = f"""You are Arviso AI's risk assessment module - understanding client relationships with empathy and human insight.
 
-Analyze the following client data to determine churn risk:
+INSTRUCTION.TXT COMPLIANCE:
+- Analyze with human-like understanding, not just data patterns
+- Consider the client's natural communication style and "vibe"
+- Factor in time since accident for emotional context
+- Look for genuine relationship deterioration vs normal emotional processing
 
+CLIENT COMMUNICATION ANALYSIS:
 SENTIMENT HISTORY: {sentiment_history}
 RESPONSE RATE: {response_rate} (0.0 = never responds, 1.0 = always responds)
 KEYWORDS MENTIONED: {keywords_mentioned}
 DAYS SINCE LAST RESPONSE: {days_since_last_response}
 
-RISK FACTORS TO CONSIDER:
-- Declining sentiment trend
-- Low response rates
-- Mentions of dissatisfaction ("slow", "unhappy", "frustrated")
-- Mentions of switching lawyers ("another lawyer", "different firm")
-- Extended periods of non-communication
-- Financial stress indicators
-- Process confusion or concerns
+HUMAN-CENTERED RISK FACTORS:
+- Declining sentiment trend (consider accident recovery timeline)
+- Communication pattern changes (matched to their natural style)
+- Explicit dissatisfaction ("slow", "unhappy", "frustrated")
+- Shopping behaviors ("another lawyer", "different firm")
+- Unusual silence periods (relative to their normal pattern)
+- Financial stress indicators affecting case participation
+- Confusion about process or lack of updates
 
-RISK LEVELS:
-- HIGH: Immediate intervention needed, high churn probability
-- MEDIUM: Monitor closely, some concerning indicators
+RISK LEVELS WITH EMPATHY:
+- HIGH: Client showing clear signs of leaving, needs immediate personal attention
+- MEDIUM: Concerning patterns, needs human warmth and extra care
 - LOW: Healthy relationship, standard monitoring
 
 Return assessment in JSON format:
